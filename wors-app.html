@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title>Example Title</title>
+	<meta name="author" content="Your Name">
+	<meta name="description" content="Example description">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="words-app.css">
+	<link rel="icon" type="image/x-icon" href="" />
+</head>
+
+<body>
+	<header>
+		<p>Words Searcher</p>
+		<input id="search-input" type="text" placeholder="search word" required>
+		<button id="search-btn">&#128269</button>
+	</header>
+	<main>
+		<p id="introduction">Word searcher helps you to find the different meanings of words, their pronunnciation, synonyms and more, making you to improve your language skills</p>
+		<div id="search-container">
+			<p id="results-number"><span id="total-results"></span><span id="collapse-arrow">&#8227;</span></p>
+			<ol id="results-list-container"></ol>
+
+
+		</div>
+
+
+		<div id="full-word-block">
+			<p id="searched-word"></p>
+			<ul id="word-facts-container">
+				<li>Pronunciation <br>
+					<span class="facts" id="word-pronunciation"></span></li>
+				<li>Definition <br>
+					<span class="facts" id="word-definition"></span></li>
+				<li>Part Of Speech <br>
+					<span class="facts" id="word-part-speech"></span></li>
+				<li>Synonyms <br>
+					<span class="facts" id="word-synonyms"></span></li>
+				<li>Type Of <br>
+					<span class="facts" id="word-typeof"></span></li>
+				<li>Examples <br>
+					<span class="facts" id="word-examples"></span></li>
+			</ul>
+		</div>
+	</main>
+	<footer></footer>
+	<script type="text/javascript" src="words-app.js"></script>
+</body></html>
