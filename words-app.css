@@ -11,6 +11,7 @@ header {
 #introduction {
 	width: 100%;
 	text-align: center;
+	font-size: 1.rem;
 }
 #search-input {
 	width: 80%;
@@ -27,7 +28,7 @@ header {
 	padding-right: 0rem;
 	margin-left:-2rem;
 	position: absolute;
-	margin-top: 0.1rem
+	margin-top: 0.1rem;
 
 }
 #collapse-arrow {
@@ -51,6 +52,25 @@ header {
 	display: none;
 	
 	
+}
+#loader {
+	border: 8px solid lightgray;
+	border-top: 8px solid darkgreen;
+	border-radius: 50%;
+	position: relative;
+	top: 1rem;
+	width: 40px;
+	height: 40px;
+	animation-name: spin;
+	animation-duration:0.5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	margin: auto;
+	display:none;
+}
+@keyframes spin {
+	0% {transform:rotate(0deg)}
+	100% {transform: rotate(360deg)}
 }
 
 #results-list-container {

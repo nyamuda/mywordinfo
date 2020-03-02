@@ -16,6 +16,33 @@ let searchContainer = document.querySelector("#search-container");
 
 let theWordObject = "";
 
+
+//the introductory text
+
+let introText = document.querySelector("#introduction");
+
+let newIntroduction = () => {
+	introText.innerHTML = `Here are the definitions that are associated with the word  <span style="font-weight:bold">${theWordObject["word"]}</span>. Click them to get more information about these definitions.`
+}
+
+//loading the data
+
+let theLoader = document.querySelector("#loader");
+
+let loadData = (status) => {
+	if (status === "on") {
+		introText.style.display = "none";
+		searchContainer.style.display = "none";
+		theLoader.style.display = "block";
+	} else if (status === "off") {
+		introText.style.display = "block";
+		searchContainer.style.display = "block";
+		theLoader.style.display = "none";
+	}
+}
+
+//fetching the data about the searched word
+
 let getWord = word => {
 	fetch(`https://wordsapiv1.p.mashape.com/words/${word}`, {
 			method: "GET",
@@ -32,9 +59,10 @@ let getWord = word => {
 			console.log(data);
 
 			searchContainer.style.display = "block";
-		
+
 
 			theWordObject = data;
+
 			let resultsArray = theWordObject.results;
 
 			//resultsArray is an array of objects
@@ -51,22 +79,32 @@ let getWord = word => {
 
 			//showing the total number of results
 			totalResults.innerHTML = `Search Results:${listContainer.childElementCount}`;
+
+			//changing the introductory text
+			newIntroduction()
+
+			loadData("off")
 		})
 		.catch(err => {
-			console.log(err);
+			loadData("off");
+			introText.innerHTML = "Sorry, no search results"
 		});
+	totalResults.innerHTML = 'Search Results:0';
 };
 
 
 
-
+//when the user clicks the search buttton
 searchButton.addEventListener("click", () => {
-	
+
 	getWord(searchInput.value);
-	
+
 	listContainer.innerHTML = "";
 
-	
+	loadData("on");
+
+
+
 
 });
 
@@ -159,11 +197,28 @@ let clickSearchResult = event => {
 	});
 };
 
+/*
+word of the day
+let wordOfTheDay = () => {
+	fetch("https://random-facts1.p.rapidapi.com/fact/random", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "random-facts1.p.rapidapi.com",
+		"x-rapidapi-key": "3dbcf6ea40mshbabf32ffef2d4b0p12d39djsn516819e7e052",
+		"x-fungenerators-api-secret": "X-Fungenerators-Api-Secret"
+	}
+})
+		.then(result => result.json())
+		.then(randomData => {
+			console.log(randomData);
+			let theWord = randomData.word;
 
-//the introductory text
+		})
+		.catch(error => {
+			console.log(error)
+		})
 
-let introText=document.querySelector("#introduction");
-
-let newIntroduction= () => {
-	
 }
+
+wordOfTheDay()
+*/
