@@ -1,58 +1,76 @@
 body {
-	background-color:;
 }
+
 header {
-	padding: 1rem;
+	padding-bottom: 1rem;
+	padding-top: 1rem;
 	background-color: darkgreen;
 	color: white;
 	position: relative;
 	width: 100%;
 }
-#introduction {
-	width: 100%;
-	text-align: center;
-	font-size: 1.rem;
+#app-name {
+	font-size:2rem;
+	margin-bottom: 1rem;
+	margin-top: 0rem;
 }
+
+.header-item {
+	margin-left: 1rem;
+}
+
+#introduction {
+	width: 95%;
+	text-align: center;
+	margin: auto;
+	margin-top: 1rem;
+}
+
 #search-input {
-	width: 80%;
+	width: 90%;
 	height: 1.7rem;
 	border: none;
 	text-indent: 1rem;
 }
 
 #search-btn {
-	height:1.7rem;
+	height: 1.7rem;
 	border: none;
 	background-color: white;
 	font-size: 1.2rem;
 	padding-right: 0rem;
-	margin-left:-2rem;
+	margin-left: -2rem;
 	position: absolute;
 	margin-top: 0.1rem;
 
 }
+
 #collapse-arrow {
-	font-size:3rem;
+	font-size: 3rem;
 	transition: transform 0.1s ease-in-out;
 }
+
 #results-number {
-	background-color:lightgreen;
+	background-color: lightgreen;
 	position: relative;
-	display:flex;
+	display: flex;
 	flex-direction: row;
-	justify-content:space-around;
+	justify-content: space-around;
 	align-items: center;
-	
+	border-radius: 10px;
+
 }
+
 #search-container {
 	position: relative;
-	top:-1rem;
+	top: 0rem;
 	width: 100%;
 	height: auto;
 	display: none;
-	
-	
+
+
 }
+
 #loader {
 	border: 8px solid lightgray;
 	border-top: 8px solid darkgreen;
@@ -62,15 +80,21 @@ header {
 	width: 40px;
 	height: 40px;
 	animation-name: spin;
-	animation-duration:0.5s;
+	animation-duration: 0.5s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
 	margin: auto;
-	display:none;
+	display: none;
 }
+
 @keyframes spin {
-	0% {transform:rotate(0deg)}
-	100% {transform: rotate(360deg)}
+	0% {
+		transform: rotate(0deg)
+	}
+
+	100% {
+		transform: rotate(360deg)
+	}
 }
 
 #results-list-container {
@@ -78,34 +102,117 @@ header {
 	top: -1.5rem;
 	transition: transform 0.5s linear;
 	background-color: lightgreen;
-	display:block;
+	display: block;
 	padding-bottom: 1rem;
-	
+
 }
+
 #results-list-container li {
 	margin-top: 1rem;
 }
+
 #full-word-block {
-	position:relative;
-	top:-1rem;
-	display:none;
+	position: relative;
+	top: -1rem;
+	display: none;
 	transition: transform 0.5s linear;
 	width: 100%;
-	
+
 }
+
 #searched-word {
 	text-align: center;
 	font-weight: bold;
-	font-size:2rem;
+	font-size: 2rem;
 }
+
 #word-facts-container {
 	list-style-type: none;
-	
+
 }
+
 #word-facts-container li {
 	line-height: 2rem;
-	font-weight:bold;
+	font-weight: bold;
 }
+
 .facts {
 	font-weight: normal;
+}
+
+#day-container {
+	position:relative;
+	border: 1px solid darkgreen;
+	width:100%;
+	top: 2rem;
+	min-height:30rem;
+}
+#day-title {
+	text-align: center;
+	font-size: 2rem;
+}
+#the-date {
+	text-align: center;
+	font-size: 1rem;
+}
+#word-of-day {
+	text-align: center;
+	font-size:2rem;
+	font-weight: bold;
+	margin-top: 0rem;
+}
+#note-about-word {
+	font-style: italic;
+	text-align: center;
+	width: 80%;
+	margin: auto;
+}
+#word-day-definition {
+	text-align: center;
+	width: 80%;
+	margin: auto;
+	margin-top: 1rem;
+}
+#word-day-examples {
+	width: 80%;
+	text-align: center;
+	margin: auto;
+	
+}
+#word-audio-container {
+	display: flex;
+	flex-direction: row;
+	justify-content:center;
+	width: inherit;
+	align-items: center;
+}
+#audio-icon {
+	width: 25px;
+	margin-left: 1rem;
+	margin-top: -2rem;
+	cursor: pointer;
+	display: none;
+}
+#audio-icon:hover {
+	background: darkgreen;
+}
+#audio-container {
+	position: relative;
+	top: 4rem;
+}
+
+#word-audio {
+	cursor: pointer;
+}
+footer {
+	width: 100%;
+	height: auto;
+	background-color: darkgreen;
+	color: white;
+	position:relative;
+	top:10rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+		
 }

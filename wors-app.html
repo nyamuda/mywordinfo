@@ -13,40 +13,72 @@
 
 <body>
 	<header>
-		<p>Words Searcher</p>
-		<input id="search-input" type="text" placeholder="search word" required>
-		<button id="search-btn">&#128269</button>
+
+		<p class="header-item" id="app-name">Word Pro</p>
+		<form>
+			<input class="header-item" id="search-input" type="text" placeholder="search word" required>
+			<button class="header-item" id="search-btn">&#128269</button>
+		</form>
 	</header>
 	<main>
-		<p id="introduction">Word searcher helps you to find the different meanings of words, their pronunciation, synonyms and more, making you improve your language skills</p>
+		<p id="introduction">Word Pro helps you to find the different meanings of words, their pronunciation, synonyms and more, making you improve your language skills</p>
 		<div id="search-container">
 			<p id="results-number"><span id="total-results"></span><span id="collapse-arrow">&#8227;</span></p>
 			<ol id="results-list-container"></ol>
 
 
 		</div>
-		
+
 		<div id="loader"></div>
 
 
 		<div id="full-word-block">
 			<p id="searched-word"></p>
 			<ul id="word-facts-container">
-				<li>Pronunciation <br>
+				<li>Pronunciation: <br>
 					<span class="facts" id="word-pronunciation"></span></li>
-				<li>Definition <br>
+				<li>Definition: <br>
 					<span class="facts" id="word-definition"></span></li>
-				<li>Part Of Speech <br>
+				<li>Part Of Speech: <br>
 					<span class="facts" id="word-part-speech"></span></li>
-				<li>Synonyms <br>
+				<li>Synonyms: <br>
 					<span class="facts" id="word-synonyms"></span></li>
-				<li>Type Of <br>
+				<li>Type Of: <br>
 					<span class="facts" id="word-typeof"></span></li>
-				<li>Examples <br>
+				<li>Examples: <br>
 					<span class="facts" id="word-examples"></span></li>
 			</ul>
 		</div>
+
+		<div id="day-container">
+			<p id="day-title">Word of the Day</p>
+			<p id="the-date"></p>
+			<div id="word-audio-container">
+
+				<p id="word-of-day"></p>
+				<img id="audio-icon" src="images/Universal_(103).jpg">
+			</div>
+
+			<p id="note-about-word"></p>
+			<p id="word-day-definition"></p>
+
+			<div id="word-day-examples">
+			</div>
+		</div>
+
+		<div id="audio-container">
+
+			<audio id="word-audio" preload="auto"/>
+
+
+		</div>
 	</main>
-	<footer></footer>
+
+	<footer>
+		<p>Word Pro</p>
+		<p>&#xA9 2020</p>
+	</footer>
 	<script type="text/javascript" src="words-app.js"></script>
-</body></html>
+</body>
+
+</html>

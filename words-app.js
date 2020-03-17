@@ -95,13 +95,16 @@ let getWord = word => {
 
 
 //when the user clicks the search buttton
-searchButton.addEventListener("click", () => {
+searchButton.addEventListener("click", (event) => {
+	console.log("search clicked")
 
 	getWord(searchInput.value);
 
 	listContainer.innerHTML = "";
 
 	loadData("on");
+	
+	event.preventDefault()
 
 
 
@@ -197,21 +200,58 @@ let clickSearchResult = event => {
 	});
 };
 
-/*
-word of the day
-let wordOfTheDay = () => {
-	fetch("https://random-facts1.p.rapidapi.com/fact/random", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "random-facts1.p.rapidapi.com",
-		"x-rapidapi-key": "3dbcf6ea40mshbabf32ffef2d4b0p12d39djsn516819e7e052",
-		"x-fungenerators-api-secret": "X-Fungenerators-Api-Secret"
-	}
-})
+
+
+
+
+
+
+
+//getting the word of the day
+
+let wordDayExamples=document.querySelector("#word-day-examples");
+let todayDate=document.querySelector("#the-date");
+let wordOfToday=document.querySelector("#word-of-day");
+let wordDayDefinition=document.querySelector("#word-day-definition");
+let noteAboutWord=document.querySelector("#note-about-word");
+
+//this variable is for use in the next function after getDayWord
+let substituteWord="";
+
+let getDayWord = () => {
+	fetch("https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=rpgg239mclulm2av9j69xubyc3prhim5p7vtybblo36mj0hb7")
 		.then(result => result.json())
 		.then(randomData => {
 			console.log(randomData);
-			let theWord = randomData.word;
+		//getting the date of the day
+		todayDate.innerHTML=randomData.pdd;
+		
+		//getting the word of that day
+		
+		wordOfToday.innerHTML=randomData.word;
+		
+		substituteWord=randomData.word;
+		
+		//where the word come from
+		noteAboutWord.innerHTML=randomData.note;
+		
+		//the definiton of the word
+		
+		wordDayDefinition.innerHTML=`<span style="font-weight:bold">Definition:</span><br>${randomData.definitions[0].text}`;
+		
+		//adding some examples of the use of the word
+		
+		//the examples property value is an array of objects
+		wordDayExamples.innerHTML="<p style='font-weight:bold'>Examples:</p>"
+		randomData.examples.forEach(val => {
+			let newExample=document.createElement("p");
+			newExample.innerHTML=val.text;
+			
+			wordDayExamples.appendChild(newExample)
+			
+		})
+		
+		console.log(wordDayExamples)
 
 		})
 		.catch(error => {
@@ -220,5 +260,52 @@ let wordOfTheDay = () => {
 
 }
 
-wordOfTheDay()
+getDayWord();
+
+
+
+//getting the audio of the word
+let audioIcon= document.querySelector("#audio-icon");
+let wordAudio = document.querySelector("#word-audio");
+let audioTag=document.querySelector("audio");
+
+//adding an event listener for for the audioIcon
+
+audioIcon.addEventListener("click",() => {
+	
+	wordAudio.play()
+})
+	
+let wordOfTheDay = word => {
+	fetch(`https://api.wordnik.com/v4/word.json/${word}/audio?useCanonical=false&limit=50&api_key=rpgg239mclulm2av9j69xubyc3prhim5p7vtybblo36mj0hb7`)
+		.then(result => result.json())
+		.then(randomData => {
+			console.log(randomData);
+		
+		let audioURL=randomData[1].fileUrl;
+		
+		wordAudio.setAttribute("src",audioURL);
+		
+		audioIcon.style.display="block";
+		
+		})
+		.catch(error => {
+			console.log(error)
+		})
+
+}
+
+wordOfTheDay(substituteWord)
+
+
+
+
+/*generating any number between 3 and 10
+let btwThreeAndTen = () => Math.floor(Math.random()*(10-3+1))+3;
+
+we would like to to search for letters with any number of letters between 3 and 10 and randomly select a word from that. That word will be the word of the day, so which means we are going to be doing this every 24hrs
+
+let wordDay=() => {
+	
+}
 */
