@@ -17,7 +17,7 @@ let searchContainer = document.querySelector("#search-container");
 let theWordObject = "";
 
 
-//the introductory text
+//THE INTRODUCTORY TEXT
 
 let introText = document.querySelector("#introduction");
 
@@ -25,7 +25,7 @@ let newIntroduction = () => {
 	introText.innerHTML = `Here are the definitions that are associated with the word  <span style="font-weight:bold">${theWordObject["word"]}</span>. Click them to get more information about these definitions.`
 }
 
-//loading the data
+//THE LOADING ICON
 
 let theLoader = document.querySelector("#loader");
 
@@ -41,7 +41,9 @@ let loadData = (status) => {
 	}
 }
 
-//fetching the data about the searched word
+
+
+//FETCHING DATA FOR THE SEARCHED WORD FROM THE WORDS API
 
 let getWord = word => {
 	fetch(`https://wordsapiv1.p.mashape.com/words/${word}`, {
@@ -66,6 +68,7 @@ let getWord = word => {
 			let resultsArray = theWordObject.results;
 
 			//resultsArray is an array of objects
+		
 			resultsArray.forEach(val => {
 				let item = document.createElement("li");
 				item.innerHTML = val.definition;
@@ -82,7 +85,8 @@ let getWord = word => {
 
 			//changing the introductory text
 			newIntroduction()
-
+		
+		//turning off the loading icon
 			loadData("off")
 		})
 		.catch(err => {
@@ -117,6 +121,7 @@ searchButton.addEventListener("click", (event) => {
 //when the search results are displayed
 
 let resultsNumber = document.querySelector("#results-number");
+
 //keeping track of the clicks to resultsNumber block
 let clicks = 0;
 
@@ -137,8 +142,45 @@ resultsNumber.onclick = () => {
 
 
 
-//the function that resets every description about the word
 
+//GETTING THE AUDIO OF THE WORD FROM THE WORDNIK API
+
+let audioIcon= document.querySelector("#audio-icon");
+let wordAudio = document.querySelector("#word-audio");
+let audioTag=document.querySelector("audio");
+
+//adding an event listener for for the audioIcon
+
+audioIcon.addEventListener("click",() => {
+	
+	wordAudio.play()
+})
+	
+let AudioWordOfTheDay = word => {
+	fetch(`https://api.wordnik.com/v4/word.json/${word}/audio?useCanonical=false&limit=50&api_key=rpgg239mclulm2av9j69xubyc3prhim5p7vtybblo36mj0hb7`)
+		.then(result => result.json())
+		.then(randomData => {
+			console.log(randomData);
+		
+		let audioURL=randomData[1].fileUrl;
+		
+		wordAudio.setAttribute("src",audioURL);
+		
+		audioIcon.style.display="block";
+		
+		})
+		.catch(error => {
+			console.log(error)
+		})
+}
+
+
+
+
+
+
+//THE FUNCTION THAT RESETS EVERY DESCRIPTION ABOUT THE WORD 
+			   
 let resetAll = (...arr) => {
 	arr.forEach(val => val.innerHTML = "")
 };
@@ -146,7 +188,8 @@ let resetAll = (...arr) => {
 let fullWordBlock = document.querySelector("#full-word-block");
 let searchedWord = document.querySelector("#searched-word");
 
-//event listener for the displayed search results
+//EVENT LISTENER FOR THE DISPLAYED SEARCH RESULTS
+	
 let clickSearchResult = event => {
 	let clickedDefinition = event.target.innerText;
 	console.log(event.target.innerText);
@@ -157,6 +200,10 @@ let clickSearchResult = event => {
 			//display the searched word
 
 			searchedWord.innerHTML = theWordObject["word"];
+			
+			//display the audio icon of the the searched word
+			
+			AudioWordOfTheDay(theWordObject["word"]);
 
 			/*since the user clicked one search result, we hide all the results to display more information about the clicked word*/
 			collapseArrow.style.transform = "rotate(0deg)";
@@ -207,16 +254,14 @@ let clickSearchResult = event => {
 
 
 
-//getting the word of the day
-
+//GETTING THE WORD OF THE DAY FROM THE WORDNIK API
+	
 let wordDayExamples=document.querySelector("#word-day-examples");
 let todayDate=document.querySelector("#the-date");
 let wordOfToday=document.querySelector("#word-of-day");
 let wordDayDefinition=document.querySelector("#word-day-definition");
 let noteAboutWord=document.querySelector("#note-about-word");
 
-//this variable is for use in the next function after getDayWord
-let substituteWord="";
 
 let getDayWord = () => {
 	fetch("https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=rpgg239mclulm2av9j69xubyc3prhim5p7vtybblo36mj0hb7")
@@ -230,7 +275,6 @@ let getDayWord = () => {
 		
 		wordOfToday.innerHTML=randomData.word;
 		
-		substituteWord=randomData.word;
 		
 		//where the word come from
 		noteAboutWord.innerHTML=randomData.note;
@@ -264,48 +308,3 @@ getDayWord();
 
 
 
-//getting the audio of the word
-let audioIcon= document.querySelector("#audio-icon");
-let wordAudio = document.querySelector("#word-audio");
-let audioTag=document.querySelector("audio");
-
-//adding an event listener for for the audioIcon
-
-audioIcon.addEventListener("click",() => {
-	
-	wordAudio.play()
-})
-	
-let wordOfTheDay = word => {
-	fetch(`https://api.wordnik.com/v4/word.json/${word}/audio?useCanonical=false&limit=50&api_key=rpgg239mclulm2av9j69xubyc3prhim5p7vtybblo36mj0hb7`)
-		.then(result => result.json())
-		.then(randomData => {
-			console.log(randomData);
-		
-		let audioURL=randomData[1].fileUrl;
-		
-		wordAudio.setAttribute("src",audioURL);
-		
-		audioIcon.style.display="block";
-		
-		})
-		.catch(error => {
-			console.log(error)
-		})
-
-}
-
-wordOfTheDay(substituteWord)
-
-
-
-
-/*generating any number between 3 and 10
-let btwThreeAndTen = () => Math.floor(Math.random()*(10-3+1))+3;
-
-we would like to to search for letters with any number of letters between 3 and 10 and randomly select a word from that. That word will be the word of the day, so which means we are going to be doing this every 24hrs
-
-let wordDay=() => {
-	
-}
-*/

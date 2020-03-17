@@ -189,12 +189,14 @@ header {
 #audio-icon {
 	width: 25px;
 	margin-left: 1rem;
-	margin-top: -2rem;
+	margin-top:0.2rem;
 	cursor: pointer;
 	display: none;
 }
 #audio-icon:hover {
-	background: darkgreen;
+	border: 1px solid;
+	border-radius: 50%;
+	
 }
 #audio-container {
 	position: relative;
