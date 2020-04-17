@@ -122,6 +122,10 @@ header {
 	cursor: pointer;
 }
 
+#results-list-container li:hover {
+	text-decoration: underline;
+}
+
 #full-word-block {
 	position: relative;
 	top: -1rem;
@@ -310,9 +314,6 @@ footer {
 		color: black;
 	}
 	#results-number:hover {
-		background-color:lightgreen;
-		border: none;
-		color:black;
 		
 	}
 	#results-list-container {
