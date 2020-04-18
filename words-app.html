@@ -9,9 +9,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="words-app.css">
 	<link rel="icon" type="image/x-icon" href="" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
-	
+
 
 
 <body>
@@ -23,16 +24,51 @@
 			<button class="header-item" id="search-btn">&#128269</button>
 		</form>
 	</header>
+
+
 	<main>
-		<p id="introduction">Word Pro helps you to find the different meanings of words, their pronunciation, synonyms and more, making you improve your language skills</p>
-		<div id="search-container">
-			<p id="results-number"><span id="total-results"></span><span id="collapse-arrow">&#8227;</span></p>
-			<ol id="results-list-container"></ol>
+		
+		<div id="intro-loader">
+			<p id="introduction">Word Pro helps you to find the different meanings of words, their pronunciation, synonyms and more, making you improve your language skills</p>
+
+
+		<div id="loader"></div>
+
+		</div>
+
+
+
+		<div id="smooth-collapse-container">
+
+
+
+			<label class="wrap-collapsible">
+
+				<input id="arrow" class="toggle" type="checkbox">
+				<div class="toggler">
+					<h3 id="results-number" class="toggler-text"><span id="total-results"></span></h3>
+				</div>
+
+				<div class="collapsible-content">
+					<div class="collapsible-content-inner">
+
+						<div id="search-container">
+							<ol id="results-list-container"></ol>
+						</div>
+
+					</div>
+
+				</div>
+
+			</label>
+
 
 
 		</div>
 
-		<div id="loader"></div>
+
+
+
 
 
 		<div id="full-word-block">

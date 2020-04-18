@@ -1,4 +1,5 @@
 body {
+	font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -8,7 +9,96 @@ header {
 	color: white;
 	position: relative;
 	width: 100%;
+	
 }
+
+
+
+
+
+ .wrap-collapsible {
+    margin: 1rem 0;
+    position: relative;
+  }
+
+  input[type='checkbox'] {
+    opacity: 0;
+    position: absolute;
+  }
+
+  .toggler {
+    display: block;
+    position: relative;
+    cursor: pointer;
+
+    border: 1px solid transparent;
+    border-radius: 7px;
+    transition: all 0.5s ease-out;
+  }
+
+  .toggler-text {
+    display: inline-block;
+    margin: .25rem 0 .25rem 1rem;
+  }
+
+  .toggler::before {
+    content: ' ';
+    position: absolute;
+    top: calc(50% - .25rem);
+
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid currentColor;
+    vertical-align: middle;
+    margin-right: .7rem;
+    margin-left: .25rem;
+    transform: translateY(-2px);
+
+    transition: transform .2s ease-out;
+  }
+
+  .toggle:checked+.toggler::before {
+    transform: rotate(90deg) translateX(-3px);
+  }
+
+  .toggle:focus+.toggler {
+    border-color: lightblue;
+  }
+
+  .collapsible-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height .5s ease-in-out;
+  }
+
+  .toggle:checked+.toggler+.collapsible-content {
+    max-height: 100vh;
+    overflow: auto;
+  }
+
+  .toggle:checked+.toggler {
+    border-color: transparent;
+  }
+
+  .collapsible-content .collapsible-content-inner {
+    padding: 0 1.25rem;
+    margin: 0;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #app-name {
 	font-size:2rem;
 	margin-bottom: 1rem;
@@ -19,12 +109,22 @@ header {
 	margin-left: 1rem;
 }
 
+#intro-loader {
+	min-height: 6rem;
+	width: 100%;
+}
 #introduction {
 	width: 95%;
 	text-align: center;
 	margin: auto;
 	margin-top: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	
 }
+
 
 #search-input {
 	width: 90%;
@@ -46,26 +146,19 @@ header {
 
 }
 
-#collapse-arrow {
-	font-size: 3rem;
-	transition: transform 0.1s ease-in-out;
-	cursor: pointer;
+#smooth-collapse-container {
+	position: relative;
+	top: 1rem;
 }
 
-#results-number {
-	background-color:rgb(32,32,32);
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	align-items: center;
-	border-radius: 10px;
-	cursor: pointer;
-	color:white;
-	width:80%;
-	margin: auto;
-	margin-top: 1rem;
 
+#results-number {
+	
+}
+
+
+.toggler {
+	margin-left: 1rem;
 }
 
 #search-container {
@@ -108,10 +201,10 @@ header {
 #results-list-container {
 	position: relative;
 	transition: transform 0.5s linear;
-	background-color:rgb(32,32,32);
-	display: block;
+	background-color:rgba(32,32,32,0.1);
+	display: none;
 	padding-bottom: 1rem;
-	color: white;
+	color: #0000FF;
 	padding-top: 1rem;
 	padding-right: 1rem;
 
@@ -128,7 +221,7 @@ header {
 
 #full-word-block {
 	position: relative;
-	top: -1rem;
+	top: 2rem;
 	display: none;
 	transition: transform 0.5s linear;
 	width:90%;
@@ -162,7 +255,7 @@ header {
 	position:relative;
 	border: 0.5rem solid rgb(0,0,255,0.5);
 	width:96%;
-	top: 2rem;
+	top: 3rem;
 	min-height:30rem;
 	margin: auto;
 }

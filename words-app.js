@@ -9,7 +9,6 @@ let wordSynonyms = document.querySelector("#word-synonyms");
 let wordTypeOf = document.querySelector("#word-typeof");
 let wordExamples = document.querySelector("#word-examples");
 
-let collapseArrow = document.querySelector("#collapse-arrow");
 
 let totalResults = document.querySelector("#total-results");
 let searchContainer = document.querySelector("#search-container");
@@ -17,7 +16,13 @@ let searchContainer = document.querySelector("#search-container");
 let theWordObject = "";
 
 
+let collapseContent = document.querySelector(".collapsible-content-inner");
+
+
+
 //THE INTRODUCTORY TEXT
+
+
 
 let introText = document.querySelector("#introduction");
 
@@ -65,10 +70,12 @@ let getWord = word => {
 
 			theWordObject = data;
 
+			listContainer.style.display = "block";
+
 			let resultsArray = theWordObject.results;
 
 			//resultsArray is an array of objects
-		
+
 			resultsArray.forEach(val => {
 				let item = document.createElement("li");
 				item.innerHTML = val.definition;
@@ -78,21 +85,30 @@ let getWord = word => {
 				listContainer.appendChild(item);
 			});
 
-			collapseArrow.style.transform = "rotate(90deg)";
 
 			//showing the total number of results
 			totalResults.innerHTML = `Search Results:${listContainer.childElementCount}`;
 
 			//changing the introductory text
 			newIntroduction()
-		
-		//turning off the loading icon
+
+			//turning off the loading icon
 			loadData("off")
 		})
 		.catch(err => {
 			loadData("off");
-			introText.innerHTML = "Sorry, no search results"
+
+			listContainer.style.display = "none";
+
+
+			introText.innerHTML = "<img src='images/sorry.jpg' width='100px'><span style='font-weight:bold'>Sorry, no results found - try a different search selection or check your internet connection.<span>";
+
+
+			introText.setAttribute("style", "display:flex;flex-direction:row;align-items:center")
+
+
 		});
+
 	totalResults.innerHTML = 'Search Results:0';
 };
 
@@ -107,7 +123,7 @@ searchButton.addEventListener("click", (event) => {
 	listContainer.innerHTML = "";
 
 	loadData("on");
-	
+
 	event.preventDefault()
 
 
@@ -118,56 +134,33 @@ searchButton.addEventListener("click", (event) => {
 
 
 
-//when the search results are displayed
-
-let resultsNumber = document.querySelector("#results-number");
-
-//keeping track of the clicks to resultsNumber block
-let clicks = 0;
-
-
-resultsNumber.onclick = () => {
-	if (clicks == 0) {
-		listContainer.style.display = "block";
-		collapseArrow.style.transform = "rotate(90deg)";
-		++clicks;
-		console.log(clicks)
-	} else {
-		listContainer.style.display = "none";
-		collapseArrow.style.transform = "rotate(0deg)";
-		--clicks;
-		console.log(clicks)
-	}
-};
-
-
 
 
 //GETTING THE AUDIO OF THE WORD FROM THE WORDNIK API
 
-let audioIcon= document.querySelector("#audio-icon");
+let audioIcon = document.querySelector("#audio-icon");
 let wordAudio = document.querySelector("#word-audio");
-let audioTag=document.querySelector("audio");
+let audioTag = document.querySelector("audio");
 
 //adding an event listener for for the audioIcon
 
-audioIcon.addEventListener("click",() => {
-	
+audioIcon.addEventListener("click", () => {
+
 	wordAudio.play()
 })
-	
+
 let AudioWordOfTheDay = word => {
 	fetch(`https://api.wordnik.com/v4/word.json/${word}/audio?useCanonical=false&limit=50&api_key=rpgg239mclulm2av9j69xubyc3prhim5p7vtybblo36mj0hb7`)
 		.then(result => result.json())
 		.then(randomData => {
 			console.log(randomData);
-		
-		let audioURL=randomData[1].fileUrl;
-		
-		wordAudio.setAttribute("src",audioURL);
-		
-		audioIcon.style.display="block";
-		
+
+			let audioURL = randomData[1].fileUrl;
+
+			wordAudio.setAttribute("src", audioURL);
+
+			audioIcon.style.display = "block";
+
 		})
 		.catch(error => {
 			console.log(error)
@@ -180,7 +173,7 @@ let AudioWordOfTheDay = word => {
 
 
 //THE FUNCTION THAT RESETS EVERY DESCRIPTION ABOUT THE WORD 
-			   
+
 let resetAll = (...arr) => {
 	arr.forEach(val => val.innerHTML = "")
 };
@@ -189,7 +182,7 @@ let fullWordBlock = document.querySelector("#full-word-block");
 let searchedWord = document.querySelector("#searched-word");
 
 //EVENT LISTENER FOR THE DISPLAYED SEARCH RESULTS
-	
+
 let clickSearchResult = event => {
 	let clickedDefinition = event.target.innerText;
 	console.log(event.target.innerText);
@@ -200,15 +193,11 @@ let clickSearchResult = event => {
 			//display the searched word
 
 			searchedWord.innerHTML = theWordObject["word"];
-			
+
 			//display the audio icon of the the searched word
-			
+
 			AudioWordOfTheDay(theWordObject["word"]);
 
-			/*since the user clicked one search result, we hide all the results to display more information about the clicked word*/
-			collapseArrow.style.transform = "rotate(0deg)";
-			listContainer.style.display = "none";
-			clicks = 0;
 
 
 			//clear all the the information about the previous word using our reset function
@@ -255,12 +244,12 @@ let clickSearchResult = event => {
 
 
 //GETTING THE WORD OF THE DAY FROM THE WORDNIK API
-	
-let wordDayExamples=document.querySelector("#word-day-examples");
-let todayDate=document.querySelector("#the-date");
-let wordOfToday=document.querySelector("#word-of-day");
-let wordDayDefinition=document.querySelector("#word-day-definition");
-let noteAboutWord=document.querySelector("#note-about-word");
+
+let wordDayExamples = document.querySelector("#word-day-examples");
+let todayDate = document.querySelector("#the-date");
+let wordOfToday = document.querySelector("#word-of-day");
+let wordDayDefinition = document.querySelector("#word-day-definition");
+let noteAboutWord = document.querySelector("#note-about-word");
 
 
 let getDayWord = () => {
@@ -268,34 +257,34 @@ let getDayWord = () => {
 		.then(result => result.json())
 		.then(randomData => {
 			console.log(randomData);
-		//getting the date of the day
-		todayDate.innerHTML=randomData.pdd;
-		
-		//getting the word of that day
-		
-		wordOfToday.innerHTML=randomData.word;
-		
-		
-		//where the word come from
-		noteAboutWord.innerHTML=randomData.note;
-		
-		//the definiton of the word
-		
-		wordDayDefinition.innerHTML=`<span style="font-weight:bold">Definition:</span><br>${randomData.definitions[0].text}`;
-		
-		//adding some examples of the use of the word
-		
-		//the examples property value is an array of objects
-		wordDayExamples.innerHTML="<p style='font-weight:bold'>Examples:</p>"
-		randomData.examples.forEach(val => {
-			let newExample=document.createElement("p");
-			newExample.innerHTML=val.text;
-			
-			wordDayExamples.appendChild(newExample)
-			
-		})
-		
-		console.log(wordDayExamples)
+			//getting the date of the day
+			todayDate.innerHTML = randomData.pdd;
+
+			//getting the word of that day
+
+			wordOfToday.innerHTML = randomData.word;
+
+
+			//where the word come from
+			noteAboutWord.innerHTML = randomData.note;
+
+			//the definiton of the word
+
+			wordDayDefinition.innerHTML = `<span style="font-weight:bold">Definition:</span><br>${randomData.definitions[0].text}`;
+
+			//adding some examples of the use of the word
+
+			//the examples property value is an array of objects
+			wordDayExamples.innerHTML = "<p style='font-weight:bold'>Examples:</p>"
+			randomData.examples.forEach(val => {
+				let newExample = document.createElement("p");
+				newExample.innerHTML = val.text;
+
+				wordDayExamples.appendChild(newExample)
+
+			})
+
+			console.log(wordDayExamples)
 
 		})
 		.catch(error => {
@@ -305,6 +294,3 @@ let getDayWord = () => {
 }
 
 getDayWord();
-
-
-
