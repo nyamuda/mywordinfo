@@ -15,7 +15,7 @@ let searchContainer = document.querySelector("#search-container");
 
 let theWordObject = "";
 
-let theArrow=document.querySelector(".toggler");
+let theArrow = document.querySelector(".toggler");
 
 
 let collapseContent = document.querySelector(".collapsible-content-inner");
@@ -53,9 +53,9 @@ let loadData = (status) => {
 //FETCHING DATA FOR THE SEARCHED WORD FROM THE WORDS API
 
 let getWord = word => {
-	fetch(`https://wordsapiv1.p.mashape.com/words/${word}`, {
-			method: "GET",
-			headers: {
+	fetch(`https://wordsapiv1.p.rapidapi.com/words/${word}`, {
+			"method": "GET",
+			"headers": {
 				"x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
 				"x-rapidapi-key": "3dbcf6ea40mshbabf32ffef2d4b0p12d39djsn516819e7e052"
 			}
@@ -73,7 +73,7 @@ let getWord = word => {
 			theWordObject = data;
 
 			listContainer.style.display = "block";
-		theArrow.style.display="block"
+			theArrow.style.display = "block"
 
 			let resultsArray = theWordObject.results;
 
@@ -102,14 +102,14 @@ let getWord = word => {
 			loadData("off");
 
 			listContainer.style.display = "none";
-		
-		theArrow.style.display="none"
+
+			theArrow.style.display = "none"
 
 
-			introText.innerHTML = "<img src='images/sorry.jpg' width='50px'><span style='font-weight:bold'>Sorry, no results found - try a different search selection or check your internet connection.<span>";
+			introText.innerHTML = "<img src='images/sorry.jpg' width='50px'><span style='font-style:italic;font-size:1re' >Sorry, no results found - try a different search selection or check your internet connection.<span>";
 
 
-			introText.setAttribute("style", "display:flex;flex-direction:row;align-items:center")
+			introText.setAttribute("style", "display:flex;flex-direction:row;align-items:center;justify-content:center")
 
 
 		});
@@ -120,8 +120,8 @@ let getWord = word => {
 
 
 //when the user clicks the search buttton
-searchButton.addEventListener("click", (event) => {
-	console.log("search clicked")
+searchButton.addEventListener("click", event => {
+	console.log(searchInput.value)
 
 	getWord(searchInput.value);
 
