@@ -159,6 +159,7 @@ header {
 
 .toggler {
 	margin-left: 1rem;
+	display:block;
 }
 
 #search-container {
@@ -209,6 +210,7 @@ header {
 	padding-right: 1rem;
 
 }
+
 
 #results-list-container li {
 	margin-top: 1rem;

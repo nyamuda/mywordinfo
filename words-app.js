@@ -15,6 +15,8 @@ let searchContainer = document.querySelector("#search-container");
 
 let theWordObject = "";
 
+let theArrow=document.querySelector(".toggler");
+
 
 let collapseContent = document.querySelector(".collapsible-content-inner");
 
@@ -71,6 +73,7 @@ let getWord = word => {
 			theWordObject = data;
 
 			listContainer.style.display = "block";
+		theArrow.style.display="block"
 
 			let resultsArray = theWordObject.results;
 
@@ -99,9 +102,11 @@ let getWord = word => {
 			loadData("off");
 
 			listContainer.style.display = "none";
+		
+		theArrow.style.display="none"
 
 
-			introText.innerHTML = "<img src='images/sorry.jpg' width='100px'><span style='font-weight:bold'>Sorry, no results found - try a different search selection or check your internet connection.<span>";
+			introText.innerHTML = "<img src='images/sorry.jpg' width='50px'><span style='font-weight:bold'>Sorry, no results found - try a different search selection or check your internet connection.<span>";
 
 
 			introText.setAttribute("style", "display:flex;flex-direction:row;align-items:center")
