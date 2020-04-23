@@ -106,7 +106,7 @@ let getWord = word => {
 			theArrow.style.display = "none"
 
 
-			introText.innerHTML = "<img src='images/sorry.jpg' width='50px'><span style='font-style:italic;font-size:1re' >Sorry, no results found - try a different search selection or check your internet connection.<span>";
+			introText.innerHTML = "<img src='images/sorry.jpg' width='50px'><span style='font-style:italic;font-size:1rem' >Sorry, no results found - try a different search selection or check your internet connection.<span>";
 
 
 			introText.setAttribute("style", "display:flex;flex-direction:row;align-items:center;justify-content:center")
