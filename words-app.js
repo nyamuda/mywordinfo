@@ -100,8 +100,8 @@ let getWord = word => {
             loadData("off");
 
             //display the page titles
-            pageTitles[0].style.display = "block";
-            pageTitles[1].style.display = "block";
+           // pageTitles[0].style.display = "block";
+           // pageTitles[1].style.display = "block";
         })
         .catch(err => {
             loadData("off");
@@ -110,8 +110,8 @@ let getWord = word => {
 
             theArrow.style.display = "none";
 
-            pageTitles[0].style.display = "none";
-            pageTitles[1].style.display = "none";
+            //pageTitles[0].style.display = "none";
+           // pageTitles[1].style.display = "none";
 
 
             introText.innerHTML = "<img src='images/sorry.jpg' width='50px'><span style='font-style:italic;font-size:1rem' >Sorry, no results found - try a different search selection or check your internet connection.<span>";

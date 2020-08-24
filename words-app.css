@@ -37,7 +37,7 @@ header {
     font-size: 16px;
     font-family: Montserrat, sans-serif;
     border: 0 none;
-    height: 52px;
+    height: 2.5rem;
     margin-right: 0;
     color: white;
     outline: none;
@@ -78,7 +78,7 @@ header {
     float: left;
     padding: 0;
     text-align: center;
-    height: 52px;
+    height: 2.5rem;
     cursor: pointer;
 }
 
@@ -97,6 +97,7 @@ header {
     width: 16rem;
     border-radius: 12px;
     display: none;
+    font-weight: bold
 }
 
 .img-block {
@@ -297,7 +298,7 @@ input[type='checkbox'] {
     background-color: rgba(32, 32, 32, 0.1);
     display: none;
     padding-bottom: 1rem;
-    color:lightblue;
+    color: lightblue;
     padding-top: 1rem;
     padding-right: 1rem;
 
@@ -350,7 +351,7 @@ input[type='checkbox'] {
     background: rgba(32, 32, 32, 0.5);
     width: 96%;
     top: 3rem;
-    min-height: 30rem;
+    height: auto;
     margin: auto;
     padding: 1rem;
 }
@@ -440,7 +441,7 @@ input[type='checkbox'] {
 footer {
     width: 100%;
     height: auto;
-     background-color: #232323;
+    background-color: #232323;
     color: white;
     position: relative;
     top: 10rem;
@@ -479,16 +480,47 @@ footer {
 
 
 @media(min-width:768px) {
-    header {
-        padding-top: 1.5rem;
+    main {
         display: grid;
-        grid-template-columns: 30% 60%;
-        grid-column-gap: 5rem;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(auto,1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        height: auto;
+    }
+
+    .div1 {
+        grid-area: 1 / 1 / 4 / 3;
+    }
+
+    .div2 {
+        grid-area: 1 / 3 / 4 / 5;
 
     }
+
+    .div3 {
+        grid-area: 4 / 1 / 6 / 5;
+        margin-top: 3rem;
+    }
+
+    #search {
+        width: 25rem;
+        left: -5rem;
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: auto;
+        align-items: center;
+    }
+
     #day-container {
-       
-        margin-top:5rem;
+        position: inherit;
+        top: 0rem;
+        width: 90%;
+        margin: 0rem;
     }
 
     .img-block {
@@ -504,9 +536,7 @@ footer {
         height: 100%;
         object-fit: cover;
     }
-    #day-container {
-        top: 0rem;
-    }
+
 
 
     #app-name {
@@ -557,10 +587,6 @@ footer {
     #word-facts-container li {
         width: 50%;
         margin: auto;
-    }
-
-    #day-container {
-        width: 50%;
     }
 
     #straight-line {
