@@ -30,7 +30,7 @@ let collapseContent = document.querySelector(".collapsible-content-inner");
 let introText = document.querySelector("#introduction");
 
 let newIntroduction = () => {
-    introText.innerHTML = `Here are the definitions that are associated with the word  <span style="font-weight:bold">${theWordObject["word"]}</span>. Click them to get more information about these definitions.`
+    introText.innerHTML = `<span style="font-weight:bold;font-size:2.5rem;color:#3B3E41">${theWordObject["word"]}</span>`
 }
 
 //THE LOADING ICON
@@ -91,7 +91,7 @@ let getWord = word => {
 
 
             //showing the total number of results
-            totalResults.innerHTML = `Search Results:${listContainer.childElementCount}`;
+            totalResults.innerHTML = `Results: ${listContainer.childElementCount}`;
 
             //changing the introductory text
             newIntroduction()
@@ -100,8 +100,8 @@ let getWord = word => {
             loadData("off");
 
             //display the page titles
-           // pageTitles[0].style.display = "block";
-           // pageTitles[1].style.display = "block";
+            // pageTitles[0].style.display = "block";
+            // pageTitles[1].style.display = "block";
         })
         .catch(err => {
             loadData("off");
@@ -111,7 +111,7 @@ let getWord = word => {
             theArrow.style.display = "none";
 
             //pageTitles[0].style.display = "none";
-           // pageTitles[1].style.display = "none";
+            // pageTitles[1].style.display = "none";
 
 
             introText.innerHTML = "<img src='images/sorry.jpg' width='50px'><span style='font-style:italic;font-size:1rem' >Sorry, no results found - try a different search selection or check your internet connection.<span>";
@@ -345,3 +345,19 @@ let getDayWord = () => {
 }
 
 getDayWord();
+
+
+//This last part is about displaying a random word and random images when the loads using the words in the following array.
+
+let randomWords=['love','study','maths','determination', 'courage','brave','universe','nature','flower','sea']
+
+let loadRandomWord = () => {
+    let chosen=randomWords[Math.floor(Math.random() * 11)]
+    getWord(chosen);
+    fetchImages(chosen)
+    
+}
+
+window.onload = function () {
+   loadRandomWord()
+}
