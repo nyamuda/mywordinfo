@@ -1,5 +1,5 @@
-let searchInput = document.querySelector("#search-input");
-let searchButton = document.querySelector("#search-btn");
+let searchInput = document.querySelector("#search_text");
+let searchButton = document.querySelector("#search_button");
 let listContainer = document.querySelector("#results-list-container");
 
 let wordPronunciation = document.querySelector("#word-pronunciation");
@@ -8,6 +8,7 @@ let wordpartSpeech = document.querySelector("#word-part-speech");
 let wordSynonyms = document.querySelector("#word-synonyms");
 let wordTypeOf = document.querySelector("#word-typeof");
 let wordExamples = document.querySelector("#word-examples");
+let pageTitles = document.querySelectorAll(".titles-block");
 
 
 let totalResults = document.querySelector("#total-results");
@@ -96,14 +97,21 @@ let getWord = word => {
             newIntroduction()
 
             //turning off the loading icon
-            loadData("off")
+            loadData("off");
+
+            //display the page titles
+            pageTitles[0].style.display = "block";
+            pageTitles[1].style.display = "block";
         })
         .catch(err => {
             loadData("off");
 
             listContainer.style.display = "none";
 
-            theArrow.style.display = "none"
+            theArrow.style.display = "none";
+
+            pageTitles[0].style.display = "none";
+            pageTitles[1].style.display = "none";
 
 
             introText.innerHTML = "<img src='images/sorry.jpg' width='50px'><span style='font-style:italic;font-size:1rem' >Sorry, no results found - try a different search selection or check your internet connection.<span>";
@@ -124,7 +132,7 @@ searchButton.addEventListener("click", event => {
     console.log(searchInput.value)
 
     getWord(searchInput.value);
-    
+
     fetchImages(searchInput.value)
 
     listContainer.innerHTML = "";
@@ -134,9 +142,17 @@ searchButton.addEventListener("click", event => {
     event.preventDefault()
 
 
-
-
 });
+
+//or when the user presses the enter key;
+
+searchInput.addEventListener('keydown', event => {
+    if (event.key === "Enter") {
+        searchButton.click();
+        event.preventDefault()
+
+    }
+})
 
 
 
@@ -182,11 +198,11 @@ let fetchImages = word => {
         .then(data => {
             let arrOfImages = data.hits;
             console.log(arrOfImages);
-        
-        //clearing the images that have been already loaded before loading the new ones
-        imgBlock.innerHTML="";
-        // then loading the new ones
-        displayImages(arrOfImages)
+
+            //clearing the images that have been already loaded before loading the new ones
+            imgBlock.innerHTML = "";
+            // then loading the new ones
+            displayImages(arrOfImages)
         })
 }
 
