@@ -20,6 +20,7 @@ let theArrow = document.querySelector(".toggler");
 
 
 let collapseContent = document.querySelector(".collapsible-content-inner");
+let imageGrid = document.querySelector(".img-block");
 
 
 
@@ -347,17 +348,18 @@ let getDayWord = () => {
 getDayWord();
 
 
-//This last part is about displaying a random word and random images when the loads using the words in the following array.
+//This part is about displaying a random word and random images when the loads using the words in the following array.
 
-let randomWords=['love','study','maths','determination', 'courage','brave','universe','nature','flower','sea']
+let randomWords = ['love', 'study', 'maths', 'determination', 'courage', 'brave', 'universe', 'nature', 'flower', 'sea']
 
 let loadRandomWord = () => {
-    let chosen=randomWords[Math.floor(Math.random() * 11)]
+    let chosen = randomWords[Math.floor(Math.random() * 11)]
     getWord(chosen);
     fetchImages(chosen)
-    
+
 }
 
 window.onload = function () {
-   loadRandomWord()
+    loadRandomWord()
 }
+
