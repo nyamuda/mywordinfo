@@ -1,33 +1,100 @@
 body {
-	font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 header {
-	padding-bottom: 1rem;
-	padding-top: 1rem;
-	background-color:#1d2a57;
-	color: white;
-	position: relative;
-	width: 100%;
-	font-family: 'Acme', sans-serif;
-	
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    background-color: #232323;
+    color: white;
+    position: relative;
+    width: 100%;
+    font-family: 'Acme', sans-serif;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+#search {
+    position: relative;
+    width:80%;
+    margin: 4px;
+    margin-left: 1rem;
+}
+
+#search form {
+    display: flex;
+    flex-direction: row;
+}
+
+#search_text {
+    width:100%;
+    padding: 15px 0 15px 20px;
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+    border: 0 none;
+    height: 52px;
+    margin-right: 0;
+    color: white;
+    outline: none;
+    background: #f73e25;
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: white;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: white;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: white;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: white;
+}
+
+#search_text:focus {
+    background: rgb(64, 151, 119);
+}
+
+#search_button {
+    border: 0 none;
+    background: #555 url(https://designmodo.com/demo/dropdown-menu-search/search.png) center no-repeat;
+    width:3.6rem;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 52px;
+    cursor: pointer;
 }
 
 
 
 
 
- .wrap-collapsible {
+.wrap-collapsible {
     margin: 1rem 0;
     position: relative;
-  }
+}
 
-  input[type='checkbox'] {
+input[type='checkbox'] {
     opacity: 0;
     position: absolute;
-  }
+}
 
-  .toggler {
+.toggler {
     display: block;
     position: relative;
     cursor: pointer;
@@ -35,14 +102,14 @@ header {
     border: 1px solid transparent;
     border-radius: 7px;
     transition: all 0.5s ease-out;
-  }
+}
 
-  .toggler-text {
+.toggler-text {
     display: inline-block;
     margin: .25rem 0 .25rem 1rem;
-  }
+}
 
-  .toggler::before {
+.toggler::before {
     content: ' ';
     position: absolute;
     top: calc(50% - .25rem);
@@ -56,35 +123,35 @@ header {
     transform: translateY(-2px);
 
     transition: transform .2s ease-out;
-  }
+}
 
-  .toggle:checked+.toggler::before {
+.toggle:checked + .toggler::before {
     transform: rotate(90deg) translateX(-3px);
-  }
+}
 
-  .toggle:focus+.toggler {
+.toggle:focus + .toggler {
     border-color: lightblue;
-  }
+}
 
-  .collapsible-content {
+.collapsible-content {
     max-height: 0px;
     overflow: hidden;
     transition: max-height .5s ease-in-out;
-  }
+}
 
-  .toggle:checked+.toggler+.collapsible-content {
+.toggle:checked + .toggler + .collapsible-content {
     max-height: 100vh;
     overflow: auto;
-  }
+}
 
-  .toggle:checked+.toggler {
+.toggle:checked + .toggler {
     border-color: transparent;
-  }
+}
 
-  .collapsible-content .collapsible-content-inner {
+.collapsible-content .collapsible-content-inner {
     padding: 0 1.25rem;
     margin: 0;
-  }
+}
 
 
 
@@ -96,321 +163,340 @@ header {
 
 
 #app-name {
-	font-size:2rem;
-	margin-bottom: 1rem;
-	margin-top: 0rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 0rem;
 }
 
 .header-item {
-	margin-left: 1rem;
+    margin-left: 1rem;
 }
 
 #intro-loader {
-	min-height: 12rem;
-	width: 100%;
-	border: 1px solid transparent;
+    min-height: 12rem;
+    width: 100%;
+    border: 1px solid transparent;
 }
+
 #introduction {
-	width: 90%;
-	text-align: center;
-	margin: auto;
-	margin-top: 1rem;
-	font-size: 1.5rem;
-	height: auto;
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    height: auto;
 }
 
 
 
 
 #search-input {
-	width: 90%;
-	height: 1.7rem;
-	border: none;
-	text-indent: 1rem;
+    width: 90%;
+    height: 1.7rem;
+    border: none;
+    text-indent: 1rem;
 }
 
 #search-btn {
-	height: 1.7rem;
-	border: none;
-	background-color: white;
-	font-size: 1.2rem;
-	padding-right: 0rem;
-	margin-left: -1.6rem;
-	position: absolute;
-	margin-top: 0rem;
-	cursor: pointer;
+    height: 1.7rem;
+    border: none;
+    background-color: white;
+    font-size: 1.2rem;
+    padding-right: 0rem;
+    margin-left: -1.6rem;
+    position: absolute;
+    margin-top: 0rem;
+    cursor: pointer;
 
 }
 
 #smooth-collapse-container {
-	position: relative;
-	top: 1rem;
+    position: relative;
+    top: 1rem;
 }
 
 
-#results-number {
-	
-}
+#results-number {}
 
 
 .toggler {
-	margin-left: 1rem;
-	display:none;
+    margin-left: 1rem;
+    display: none;
 }
 
 #search-container {
-	position: relative;
-	top: 0rem;
-	width: 100%;
-	height: auto;
-	display: none;
+    position: relative;
+    top: 0rem;
+    width: 100%;
+    height: auto;
+    display: none;
 
 
 }
 
 #loader {
-	border: 8px solid lightgray;
-	border-top: 8px solid  midnightblue;
-	border-radius: 50%;
-	position: relative;
-	top: 1rem;
-	width: 40px;
-	height: 40px;
-	animation-name: spin;
-	animation-duration: 0.5s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-	margin: auto;
-	display: none;
-	margin-bottom: 0.5rem;
+    border: 8px solid lightgray;
+    border-top: 8px solid midnightblue;
+    border-radius: 50%;
+    position: relative;
+    top: 1rem;
+    width: 40px;
+    height: 40px;
+    animation-name: spin;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    margin: auto;
+    display: none;
+    margin-bottom: 0.5rem;
 }
 
 @keyframes spin {
-	0% {
-		transform: rotate(0deg)
-	}
+    0% {
+        transform: rotate(0deg)
+    }
 
-	100% {
-		transform: rotate(360deg)
-	}
+    100% {
+        transform: rotate(360deg)
+    }
 }
 
 #results-list-container {
-	position: relative;
-	background-color:rgba(32,32,32,0.1);
-	display: none;
-	padding-bottom: 1rem;
-	color: #0000FF;
-	padding-top: 1rem;
-	padding-right: 1rem;
+    position: relative;
+    background-color: rgba(32, 32, 32, 0.1);
+    display: none;
+    padding-bottom: 1rem;
+    color: #0000FF;
+    padding-top: 1rem;
+    padding-right: 1rem;
 
 }
 
 
 #results-list-container li {
-	margin-top: 1rem;
-	cursor: pointer;
+    margin-top: 1rem;
+    cursor: pointer;
 }
 
 #results-list-container li:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 #full-word-block {
-	position: relative;
-	top: 2rem;
-	display: none;
-	transition: transform 0.5s linear;
-	width:90%;
-	margin: auto;
+    position: relative;
+    top: 2rem;
+    display: none;
+    transition: transform 0.5s linear;
+    width: 90%;
+    margin: auto;
 
 }
 
 #searched-word {
-	text-align: center;
-	font-weight: bold;
-	font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2rem;
 }
 
 #word-facts-container {
-	list-style-type: none;
-	width: inherit;
+    list-style-type: none;
+    width: inherit;
 
 }
 
 #word-facts-container li {
-	line-height: 2rem;
-	font-weight: bold;
-	margin-left:-1rem;
+    line-height: 2rem;
+    font-weight: bold;
+    margin-left: -1rem;
 }
 
 .facts {
-	font-weight: normal;
+    font-weight: normal;
 }
 
 #day-container {
-	position:relative;
-	border: 0.5rem solid rgb(0,0,255,0.5);
-	width:96%;
-	top: 3rem;
-	min-height:30rem;
-	margin: auto;
+    position: relative;
+    border: 0.5rem solid rgb(0, 0, 255, 0.5);
+    width: 96%;
+    top: 3rem;
+    min-height: 30rem;
+    margin: auto;
 }
+
 #day-title {
-	text-align: center;
-	font-size: 2rem;
+    text-align: center;
+    font-size: 2rem;
 }
+
 #straight-line {
-	width: 30%;
-	position:relative;
-	top: -1.5rem;
-	font-weight: bold;
-	text-align: center;
+    width: 30%;
+    position: relative;
+    top: -1.5rem;
+    font-weight: bold;
+    text-align: center;
 }
+
 #the-date {
-	text-align: center;
-	font-size: 1rem;
-	position: relative;
-	top: -1.5rem;
+    text-align: center;
+    font-size: 1rem;
+    position: relative;
+    top: -1.5rem;
 }
+
 #word-of-day {
-	text-align: center;
-	font-size:2rem;
-	font-weight: bold;
-	margin-top: 0rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 0rem;
 }
+
 #note-about-word {
-	font-style: italic;
-	text-align: center;
-	width: 80%;
-	margin: auto;
+    font-style: italic;
+    text-align: center;
+    width: 80%;
+    margin: auto;
 }
+
 #word-day-definition {
-	text-align: center;
-	width: 80%;
-	margin: auto;
-	margin-top: 1rem;
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 1rem;
 }
+
 #word-day-examples {
-	width: 80%;
-	text-align: center;
-	margin: auto;
-	
+    width: 80%;
+    text-align: center;
+    margin: auto;
+
 }
+
 #word-audio-container {
-	display: flex;
-	flex-direction: row;
-	justify-content:center;
-	width: inherit;
-	align-items: center;
-	width: inherit;
-	width: 70%;
-	margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: inherit;
+    align-items: center;
+    width: inherit;
+    width: 70%;
+    margin: auto;
 }
+
 #audio-icon {
-	width: 25px;
-	margin-left: 1rem;
-	margin-top:0.2rem;
-	cursor: pointer;
-	display: none;
+    width: 25px;
+    margin-left: 1rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
+    display: none;
 }
+
 #audio-icon:hover {
-	border: 1px solid;
-	border-radius: 50%;
-	
+    border: 1px solid;
+    border-radius: 50%;
+
 }
+
 #audio-container {
-	position: relative;
-	top: 4rem;
+    position: relative;
+    top: 4rem;
 }
 
 #word-audio {
-	cursor: pointer;
+    cursor: pointer;
 }
+
 footer {
-	width: 100%;
-	height: auto;
-	background-color:#1d2a57;
-	color: white;
-	position:relative;
-	top:10rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-		
+    width: 100%;
+    height: auto;
+    background-color: #1d2a57;
+    color: white;
+    position: relative;
+    top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 
 @media(min-width: 480px) {
-	#word-facts-container li {
-		width: 80%;
-		margin: auto;
-	}
-	#intro-loader {
-		height:5rem;
-		width: 80%;
-		margin: auto;
-	}
+    #word-facts-container li {
+        width: 80%;
+        margin: auto;
+    }
+
+    #intro-loader {
+        height: 5rem;
+        width: 80%;
+        margin: auto;
+    }
 }
 
 
 @media(min-width:768px) {
-	header {
-		padding-top: 1.5rem;
-		display:grid;
-		grid-template-columns: 30% 60%;
-		grid-column-gap:5rem;
-		
-	}
-	#app-name {
-		margin-left: 2rem;
-	}
-	#search-input {
-		width: 80%;
-		margin-top: 0.3rem;
-		height: 2rem;
-	}
-	#search-btn {
-		height: 1.9rem;
-		margin-top: 0.4rem;
-	}
-	#introduction {
-		width: 70%;
-		font-size: 1.5rem;
-	}
-	#smooth-collapse-container {
-		top:0rem;
-		width: 50%;
-		margin: auto;
-	}
-	.toggler {
-	}
-	#full-word-block {
-		top:0rem;
-	}
-	#results-number {
-		
-	}
-	#results-number:hover {
-		
-	}
-	
-	#results-list-container li:hover {
-		text-decoration: underline;
-	}
-	#word-audio-container {
-		width: 40%;
-		margin: auto;
-	}
-	#word-facts-container li {
-		width: 50%;
-		margin: auto;
-	}
-	#day-container {
-		width: 50%;
-	}
-	#straight-line {
-		width: 20%;
-	}
-}
+    header {
+        padding-top: 1.5rem;
+        display: grid;
+        grid-template-columns: 30% 60%;
+        grid-column-gap: 5rem;
 
+    }
+
+    #app-name {
+        margin-left: 2rem;
+    }
+
+    #search-input {
+        width: 80%;
+        margin-top: 0.3rem;
+        height: 2rem;
+    }
+
+    #search-btn {
+        height: 1.9rem;
+        margin-top: 0.4rem;
+    }
+
+    #introduction {
+        width: 70%;
+        font-size: 1.5rem;
+    }
+
+    #smooth-collapse-container {
+        top: 0rem;
+        width: 50%;
+        margin: auto;
+    }
+
+    .toggler {}
+
+    #full-word-block {
+        top: 0rem;
+    }
+
+    #results-number {}
+
+    #results-number:hover {}
+
+    #results-list-container li:hover {
+        text-decoration: underline;
+    }
+
+    #word-audio-container {
+        width: 40%;
+        margin: auto;
+    }
+
+    #word-facts-container li {
+        width: 50%;
+        margin: auto;
+    }
+
+    #day-container {
+        width: 50%;
+    }
+
+    #straight-line {
+        width: 20%;
+    }
+}

@@ -2,123 +2,147 @@
 <html lang="">
 
 <head>
-	<meta charset="utf-8">
-	<title>mywordinfo -Definitions of Words </title>
-	<meta name="author" content="Pierce Nyamuda">
-	<meta name="description" content="search the different meanings of words.">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="words-app.css">
-	<link rel="icon" type="image/x-icon" href="" />
-	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>mywordinfo -Definitions of Words </title>
+    <meta name="author" content="Pierce Nyamuda">
+    <meta name="description" content="search the different meanings of words.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="words-app.css">
+    <link rel="icon" type="image/x-icon" href="" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
 </head>
 
 
 
 
 <body>
-	<header>
+    <header>
 
-		<p class="header-item" id="app-name">mywordinfo</p>
-		<form>
-			<input class="header-item" id="search-input" type="text" placeholder="search word" required>
-			<button class="header-item" id="search-btn">&#128269</button>
-		</form>
-	</header>
+     <!--   <p class="header-item" id="app-name">mywordinfo</p>-->
+        <img src="./images/log.jpg" width="100px">
+        <div>
+
+           
 
 
-	<main>
-		
-		<div id="intro-loader">
+                <div id="search">
+                    <form action="" method="get">
+                        <input type="text" name="search_text" id="search_text" placeholder="Search" />
+                        <input type="button" name="search_button" id="search_button">
+                    </form>
+                </div>
 
-			<p id="introduction"><span></span>Find the different meanings of words, their pronunciation, synonyms and more, to improve your language skills.</p>
-			
-
-		<div id="loader"></div>
-
-		</div>
+            </div>
 
 
 
-		<div id="smooth-collapse-container">
+        
+        <!--
+        <form>
+            <input class="header-item" id="search-input" type="text" placeholder="search word" required>
+            <button class="header-item" id="search-btn">&#128269</button>
+        </form> -->
+    </header>
+
+
+    <main>
+
+        
+        <div id="intro-loader">
+
+            <p id="introduction"><span></span>Find the different meanings of words, their pronunciation, synonyms and more, to improve your language skills.</p>
+
+
+            <div id="loader"></div>
+
+        </div>
 
 
 
-			<label class="wrap-collapsible">
-
-				<input id="arrow" class="toggle" type="checkbox">
-				<div class="toggler">
-					<h3 id="results-number" class="toggler-text"><span id="total-results"></span></h3>
-				</div>
-
-				<div class="collapsible-content">
-					<div class="collapsible-content-inner">
-
-						<div id="search-container">
-							<ol id="results-list-container"></ol>
-						</div>
-
-					</div>
-
-				</div>
-
-			</label>
+        <div id="smooth-collapse-container">
 
 
 
-		</div>
+            <label class="wrap-collapsible">
+
+                <input id="arrow" class="toggle" type="checkbox">
+                <div class="toggler">
+                    <h3 id="results-number" class="toggler-text"><span id="total-results"></span></h3>
+                </div>
+
+                <div class="collapsible-content">
+                    <div class="collapsible-content-inner">
+
+                        <div id="search-container">
+                            <ol id="results-list-container"></ol>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </label>
+
+
+
+        </div>
 
 
 
 
 
 
-		<div id="full-word-block">
-			<div id="word-audio-container">
-				<p id="searched-word"></p>
+        <div id="full-word-block">
+            <div id="word-audio-container">
+                <p id="searched-word"></p>
 
-				<img id="audio-icon" src="images/Universal_(103).jpg">
-			</div>
-			<ul id="word-facts-container">
-				<li>Pronunciation: <br>
-					<span class="facts" id="word-pronunciation"></span></li>
-				<li>Definition: <br>
-					<span class="facts" id="word-definition"></span></li>
-				<li>Part Of Speech: <br>
-					<span class="facts" id="word-part-speech"></span></li>
-				<li>Synonyms: <br>
-					<span class="facts" id="word-synonyms"></span></li>
-				<li>Type Of: <br>
-					<span class="facts" id="word-typeof"></span></li>
-				<li>Examples: <br>
-					<span class="facts" id="word-examples"></span></li>
-			</ul>
-		</div>
+                <img id="audio-icon" src="images/Universal_(103).jpg">
+            </div>
+            <ul id="word-facts-container">
+                <li>Pronunciation: <br>
+                    <span class="facts" id="word-pronunciation"></span></li>
+                <li>Definition: <br>
+                    <span class="facts" id="word-definition"></span></li>
+                <li>Part Of Speech: <br>
+                    <span class="facts" id="word-part-speech"></span></li>
+                <li>Synonyms: <br>
+                    <span class="facts" id="word-synonyms"></span></li>
+                <li>Type Of: <br>
+                    <span class="facts" id="word-typeof"></span></li>
+                <li>Examples: <br>
+                    <span class="facts" id="word-examples"></span></li>
+            </ul>
+        </div>
 
-		<div id="day-container">
-			<p id="day-title">Word of the Day</p>
-			<hr id="straight-line">
-			<p id="the-date"></p>
-			<p id="word-of-day"></p>
-
-			<p id="note-about-word"></p>
-			<p id="word-day-definition"></p>
-
-			<div id="word-day-examples">
-			</div>
-		</div>
-
-		<div id="audio-container">
-
-			<audio id="word-audio" preload="auto" />
+        <div class="img-block">
 
 
-		</div>
-	</main>
+        </div>
+        <div id="day-container">
+            <p id="day-title">Word of the Day</p>
+            <hr id="straight-line">
+            <p id="the-date"></p>
+            <p id="word-of-day"></p>
 
-	<footer>
-		<p><span style="font-family: 'Acme', sans-serif; font-size: 1.5rem;">mywordinfo</span></p>
-		<p>&#xA9 2020</p>
-	</footer>
-	<script type="text/javascript" src="words-app.js"></script>
+            <p id="note-about-word"></p>
+            <p id="word-day-definition"></p>
+
+            <div id="word-day-examples">
+            </div>
+        </div>
+
+        <div id="audio-container">
+
+            <audio id="word-audio" preload="auto" />
+
+
+        </div>
+    </main>
+
+    <footer>
+        <p><span style="font-family: 'Acme', sans-serif; font-size: 1.5rem;">mywordinfo</span></p>
+        <p>&#xA9 2020</p>
+    </footer>
+    <script type="text/javascript" src="words-app.js"></script>
 </body></html>
