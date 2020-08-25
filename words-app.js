@@ -350,7 +350,7 @@ getDayWord();
 
 //This part is about displaying a random word and random images when the loads using the words in the following array.
 
-let randomWords = ['love', 'study', 'maths', 'determination', 'courage', 'brave', 'universe', 'nature', 'flower', 'sea']
+let randomWords = ['love','study','maths','determination','courage', 'soccer', 'universe', 'nature','flower','sea','life']
 
 let loadRandomWord = () => {
     let chosen = randomWords[Math.floor(Math.random() * 11)]
