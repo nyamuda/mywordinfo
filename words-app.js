@@ -21,6 +21,7 @@ let theArrow = document.querySelector(".toggler");
 
 let collapseContent = document.querySelector(".collapsible-content-inner");
 let imageGrid = document.querySelector(".img-block");
+let speakIcon = document.querySelector("#p-logo")
 
 
 
@@ -31,7 +32,8 @@ let imageGrid = document.querySelector(".img-block");
 let introText = document.querySelector("#introduction");
 
 let newIntroduction = () => {
-    introText.innerHTML = `<span style="font-weight:bold;font-size:2.5rem;color:#3B3E41">${theWordObject["word"]}</span>`
+    introText.innerHTML = `<span style="font-weight:bold;font-size:2.5rem;color:#3B3E41">${theWordObject["word"]}</span>`;
+    speakIcon.style.display = "block"
 }
 
 //THE LOADING ICON
@@ -42,6 +44,7 @@ let loadData = (status) => {
     if (status === "on") {
         introText.style.display = "none";
         searchContainer.style.display = "none";
+        speakIcon.style.display = "none"
         theLoader.style.display = "block";
     } else if (status === "off") {
         introText.style.display = "block";
@@ -99,10 +102,10 @@ let getWord = word => {
 
             //turning off the loading icon
             loadData("off");
+            //display the audio icon of the the searched word
 
-            //display the page titles
-            // pageTitles[0].style.display = "block";
-            // pageTitles[1].style.display = "block";
+            AudioWordOfTheDay(word);
+
         })
         .catch(err => {
             loadData("off");
@@ -187,7 +190,10 @@ let AudioWordOfTheDay = word => {
 
         })
         .catch(error => {
-            console.log(error)
+            console.log(error);
+        
+        //if the audio for the searche word is not found
+            speakIcon.style.display = "none"
         })
 }
 
@@ -245,10 +251,6 @@ let clickSearchResult = event => {
             //display the searched word
 
             searchedWord.innerHTML = theWordObject["word"];
-
-            //display the audio icon of the the searched word
-
-            AudioWordOfTheDay(theWordObject["word"]);
 
 
 
@@ -350,7 +352,7 @@ getDayWord();
 
 //This part is about displaying a random word and random images when the loads using the words in the following array.
 
-let randomWords = ['love','study','maths','determination','courage', 'soccer', 'universe', 'nature','flower','sea','life']
+let randomWords = ['love', 'study', 'maths', 'determination', 'courage', 'soccer', 'universe', 'nature', 'flower', 'sea', 'life']
 
 let loadRandomWord = () => {
     let chosen = randomWords[Math.floor(Math.random() * 11)]
@@ -362,4 +364,3 @@ let loadRandomWord = () => {
 window.onload = function () {
     loadRandomWord()
 }
-

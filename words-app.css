@@ -190,7 +190,13 @@ input[type='checkbox'] {
 .header-item {
     margin-left: 1rem;
 }
-
+.top-word {
+  display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 #intro-loader {
     min-height: 12rem;
     width: 100%;
@@ -198,14 +204,15 @@ input[type='checkbox'] {
 }
 
 #introduction {
-    width: 90%;
+    width:auto;
     text-align: center;
-    margin: auto;
     margin-top: 1rem;
     font-size: 1.5rem;
     height: auto;
     color: #225F73;
     font-family: 'Righteous', cursive;
+   
+    padding: 0.4rem;
 }
 
 
@@ -406,19 +413,19 @@ input[type='checkbox'] {
     width: 70%;
     margin: auto;
 }
-
-#audio-icon {
-    width: 25px;
-    margin-left: 1rem;
-    margin-top: 0.2rem;
-    cursor: pointer;
+#p-logo {
+    position: relative;
     display: none;
 }
 
-#audio-icon:hover {
-    border: 1px solid;
-    border-radius: 50%;
+#audio-icon {
+    width: 25px;
+    cursor: pointer;
+    display: none;
+    transition:all 0.3s ease-in-out;
+}
 
+#audio-icon:hover {
 }
 
 #audio-container {
@@ -549,7 +556,7 @@ footer {
     }
 
     #introduction {
-        width: 70%;
+        width:auto;
         font-size: 1.5rem;
     }
 
